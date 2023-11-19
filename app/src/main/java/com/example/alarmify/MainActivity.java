@@ -2,7 +2,10 @@ package com.example.alarmify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,8 +53,25 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listAlarms);
 
+        ImageButton openAlarmsView = findViewById(R.id.openAlarmsView);
+        ImageButton openReminderView = findViewById(R.id.openReminderView);
+
         AlarmList alarmList = new AlarmList(this, alarmTime, name, mission);
         listView.setAdapter(alarmList);
+
+        openAlarmsView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+            }
+        });
+
+        openReminderView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+            }
+        });
 
     }
 }
