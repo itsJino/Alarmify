@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ReminderActivity extends AppCompatActivity {
     private ListView listView;
@@ -17,7 +18,8 @@ public class ReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        TextView textView = new TextView(this);
+        textView.setText("Reminders");
 
         ListView listView = (ListView) findViewById(R.id.listAlarms);
 

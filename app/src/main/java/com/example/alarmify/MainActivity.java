@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
@@ -52,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView textView = new TextView(this);
+        textView.setText("Alarms");
+
         ListView listView = (ListView) findViewById(R.id.listAlarms);
+
 
         ImageButton openAlarmsView = findViewById(R.id.openAlarmsView);
         ImageButton openReminderView = findViewById(R.id.openReminderView);
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         openAlarmsView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ReminderActivity.class));
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
             }
         });
 
