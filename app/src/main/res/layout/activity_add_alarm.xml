@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TimePicker
+            android:id="@+id/timePicker"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="53dp"

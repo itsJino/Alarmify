@@ -9,44 +9,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
-    private String name[] = {
-            "Work",
-            "College",
-            "Leave for Work",
-            "Work",
-            "College",
-            "Leave for Work",
-            "Work",
-            "College",
-            "Leave for Work",
-    };
-
-    private String alarmTime[] = {
-            "10:50 AM",
-            "13:40 PM",
-            "08:20 AM",
-            "09:15 AM",
-            "14:30 PM",
-            "08:20 AM",
-            "09:15 AM",
-            "14:30 PM",
-            "08:20 AM",
-    };
-
-    private String mission[] = {
-            "Maths Question",
-            "Code Question",
-            "QR Code",
-            "Maths Question",
-            "Code Question",
-            "QR Code",
-            "Maths Question",
-            "Code Question",
-            "QR Code",
-    };
+    private ArrayList<Alarm> alarms = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +23,15 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = new TextView(this);
         textView.setText("Alarms");
 
-        ListView listView = (ListView) findViewById(R.id.listAlarms);
-
+        ListView listView = findViewById(R.id.listAlarms);
 
         ImageButton openAlarmsView = findViewById(R.id.openAlarmsView);
         ImageButton openReminderView = findViewById(R.id.openReminderView);
         Button addAlarm = findViewById(R.id.addAlarm);
 
-        AlarmList alarmList = new AlarmList(this, alarmTime, name, mission);
+        initializeAlarms(); // Method to initialize alarms ArrayList
+
+        AlarmList alarmList = new AlarmList(this, alarms);
         listView.setAdapter(alarmList);
 
         addAlarm.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         openAlarmsView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                // startActivity(new Intent(MainActivity.this, MainActivity.class)); // This might be an incorrect intent
+                // Perhaps you intended to go to a different activity here
             }
         });
 
@@ -86,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ReminderActivity.class));
             }
         });
+    }
 
+    private void initializeAlarms() {
+        // Populate the alarms ArrayList
+        alarms.add(new Alarm("Work", "10:50 AM", "Maths Question"));
+        alarms.add(new Alarm("College", "13:40 PM", "Code Question"));
+        alarms.add(new Alarm("Leave for Work", "08:20 AM", "QR Code"));
+        // Add more alarms as needed
     }
 }
