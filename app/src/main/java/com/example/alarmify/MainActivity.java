@@ -2,23 +2,37 @@ package com.example.alarmify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.alarmify.databinding.ActivityMainBinding;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
-    private ArrayList<Alarm> alarms = new ArrayList<>();
+    private ActivityMainBinding binding;
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
+    public static ArrayList<Alarm> alarms = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
+
+        createNotificationChannel();
 
         TextView textView = new TextView(this);
         textView.setText("Alarms");
@@ -29,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         ImageButton openReminderView = findViewById(R.id.openReminderView);
         Button addAlarm = findViewById(R.id.addAlarm);
 
-        initializeAlarms(); // Method to initialize alarms ArrayList
-
         AlarmList alarmList = new AlarmList(this, alarms);
         listView.setAdapter(alarmList);
 
@@ -38,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, addAlarm.class));
+
             }
         });
 
@@ -57,11 +70,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initializeAlarms() {
-        // Populate the alarms ArrayList
-        alarms.add(new Alarm("Work", "10:50 AM", "Maths Question"));
-        alarms.add(new Alarm("College", "13:40 PM", "Code Question"));
-        alarms.add(new Alarm("Leave for Work", "08:20 AM", "QR Code"));
-        // Add more alarms as needed
+    private void createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "akchannel";
+            String desc = "Channel for Alarm Manager";
+            int imp = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = null;
+            channel = new NotificationChannel("androidknowledge", name, imp);
+            channel.setDescription(desc);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
     }
 }
