@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface AlarmDao {
     @Query("SELECT * FROM alarm_table ORDER BY alarmTime DESC")
-    LiveData<List<Alarm>>  getAll();
+    LiveData<List<AlarmModal>>  getAllAlarms();
 
     @Query("DELETE FROM alarm_table")
     void deleteAllAlarms();
