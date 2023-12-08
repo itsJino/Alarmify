@@ -34,13 +34,6 @@ public class AlarmList extends ArrayAdapter<Alarm> {
             textViewName.setText(currentAlarm.getAlarmName());
             textViewTime.setText(currentAlarm.getAlarmTime());
             textViewMission.setText(currentAlarm.getAlarmMission());
-
-            textViewTime.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
         }
         return row;
     }

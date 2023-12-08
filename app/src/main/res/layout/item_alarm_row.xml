@@ -9,7 +9,6 @@
     android:background="@drawable/layout_bg"
     android:divider="@android:color/transparent">
 
-
     <TextView
         android:id="@+id/textViewName"
         android:layout_row="0"

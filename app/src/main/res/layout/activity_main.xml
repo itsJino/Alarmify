@@ -104,4 +104,24 @@
         app:layout_row="0"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <Button
+        android:id="@+id/testNotification"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="200dp"
+        android:backgroundTint="#007cbe"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:textAlignment="center"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="20dp"
+        app:layout_column="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_row="0"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteY="658dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

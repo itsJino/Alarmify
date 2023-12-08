@@ -13,12 +13,12 @@ public class AlarmReceiver extends BroadcastReceiver {
     @SuppressLint("MissingPermission")
     @Override
     public void onReceive(Context context, Intent intent) {
-
         Intent nextActivity = new Intent(context, NotificationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nextActivity, PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, nextActivity, PendingIntent.FLAG_MUTABLE);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "androidknowledge")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "alarmify")
+                .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Reminder")
                 .setContentText("It's time to wake up")
                 .setAutoCancel(true)
