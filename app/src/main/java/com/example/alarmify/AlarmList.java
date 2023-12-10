@@ -1,40 +1,47 @@
 package com.example.alarmify;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
 
-public class AlarmList extends ArrayAdapter<Alarm> {
-    private ArrayList<Alarm> alarms;
-    private Activity context;
+import java.util.List;
 
-    public AlarmList(Activity context, ArrayList<Alarm> alarms) {
+public class AlarmList extends ArrayAdapter<AlarmModal> {
+    private Context context;
+    private List<AlarmModal> alarms;
+    private AlarmDao alarmDao;
+
+    public AlarmList(Context context, List<AlarmModal> alarms) {
         super(context, R.layout.item_alarm_row, alarms);
         this.context = context;
         this.alarms = alarms;
+        this.alarmDao = AlarmDatabase.getInstance(context).AlarmDao();
     }
 
-    public View getView(int position, View convertview, ViewGroup parent) {
-        View row = convertview;
-        LayoutInflater inflater = context.getLayoutInflater();
-        if(convertview == null) {
-            row = inflater.inflate(R.layout.item_alarm_row, null, true);
-            TextView textViewName = (TextView) row.findViewById(R.id.textViewName);
-            TextView textViewTime = (TextView) row.findViewById(R.id.textViewTime);
-            TextView textViewMission = (TextView) row.findViewById(R.id.textViewMission);
-
-            Alarm currentAlarm = alarms.get(position);
-
-            textViewName.setText(currentAlarm.getAlarmName());
-            textViewTime.setText(currentAlarm.getAlarmTime());
-            textViewMission.setText(currentAlarm.getAlarmMission());
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View row = convertView;
+        if (row == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = inflater.inflate(R.layout.item_alarm_row, parent, false);
         }
+
+        TextView textViewName = row.findViewById(R.id.textViewName);
+        TextView textViewTime = row.findViewById(R.id.textViewTime);
+
+        AlarmModal currentAlarm = alarms.get(position);
+
+        textViewName.setText(currentAlarm.getAlarmName());
+        textViewTime.setText(currentAlarm.getAlarmTime());
+        // If you have more fields to display, update them accordingly
+
         return row;
     }
 }

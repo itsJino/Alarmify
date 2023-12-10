@@ -3,11 +3,8 @@ package com.example.alarmify;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,19 +15,21 @@ import android.widget.TextView;
 import com.example.alarmify.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private ActivityMainBinding binding;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
-    public static ArrayList<Alarm> alarms = new ArrayList<>();
+    public static List<AlarmModal> alarms = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
+
+
 
         TextView textView = new TextView(this);
         textView.setText("Alarms");
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, addAlarm.class));
-
             }
         });
 

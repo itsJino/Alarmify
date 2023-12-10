@@ -14,19 +14,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.alarmify.databinding.ActivityAddAlarmBinding;
-import com.example.alarmify.databinding.ActivityMainBinding;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
 import java.util.Calendar;
 
 public class addAlarm extends AppCompatActivity {
-
-    private ActivityAddAlarmBinding binding;
     private EditText editAlarmTitle;
     private MaterialTimePicker timePicker;
     private Calendar calendar;
@@ -59,7 +54,7 @@ public class addAlarm extends AppCompatActivity {
                 }
 
                 if(!title.isEmpty()) {
-                    Alarm newAlarm = new Alarm(title, String.format("%02d:%02d", hour, minute), "Default Mission");
+                    AlarmModal newAlarm = new AlarmModal(title, String.format("%02d:%02d", hour, minute));
                     MainActivity.alarms.add(newAlarm);
                     setAlarm();
 
