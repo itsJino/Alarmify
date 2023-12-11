@@ -21,8 +21,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "alarmify")
                 .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("Reminder")
-                .setContentText("It's time to wake up")
+                .setContentTitle("Alarmify")
+                .setContentText("WAKE YO ASS UP!!")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
