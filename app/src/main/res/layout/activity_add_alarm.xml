@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addAlarm">
+    tools:context=".addAlarmActivity">
 
 
     <Button
@@ -31,13 +31,13 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/editAlarmTitle"
+        android:id="@+id/editAlarmName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="428dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Title"
+        android:text="Name"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

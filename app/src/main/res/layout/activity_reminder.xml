@@ -7,37 +7,19 @@
     tools:context=".ReminderActivity">
 
     <TextView
-        android:id="@+id/header2"
-        android:layout_width="102dp"
+        android:id="@+id/header"
+        android:layout_width="224dp"
         android:layout_height="29dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans"
-        android:text="Reminder"
+        android:text="Reminders"
         android:textAlignment="center"
-        android:textColor="#E0E7EA"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/listAlarms"
-        android:layout_width="0dp"
-        android:layout_height="600dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header"
-        app:layout_constraintVertical_bias="1.0">
-
-    </ListView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomAppBar"
@@ -50,10 +32,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/openReminderView"
+            android:id="@+id/openReminderActivity"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="270dp"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             app:layout_column="2"
@@ -65,7 +47,7 @@
             app:tint="@color/white" />
 
         <ImageButton
-            android:id="@+id/openAlarmsView"
+            android:id="@+id/openMainActivityButton"
             style="@android:style/Widget.ImageButton"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -84,9 +66,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/addAlarm3"
+        android:id="@+id/addAlarm2"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="260dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="#007cbe"
         android:scaleX="2"
@@ -102,4 +85,139 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_row="0"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/StepsLayout"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="364dp"
+        android:background="@drawable/reminder_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewSteps"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Walk Every 30 Mins"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <Switch
+            android:id="@+id/stepsSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:textAlignment="center"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <TextView
+            android:id="@+id/textViewReminderSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Steps"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_column="0"
+            app:layout_row="1" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/JumpingLayout"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/reminder_bg2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StepsLayout">
+
+        <TextView
+            android:id="@+id/textViewJumpingJacks"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Jumping Jacks Every 30 Mins"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <Switch
+            android:id="@+id/jumpingSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:textAlignment="center"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <TextView
+            android:id="@+id/textViewReminderJumping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Jumping Jacks"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_column="0"
+            app:layout_row="1" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/quoteLayout"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/quote_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/quoteTextView"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/authorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
