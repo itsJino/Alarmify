@@ -49,21 +49,24 @@ public class ReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
 
+        // Initializing UI elements
         quoteTextView = findViewById(R.id.quoteTextView);
         authorTextView = findViewById(R.id.authorTextView);
         openMainActivityButton = findViewById(R.id.openMainActivityButton);
         stepsSwitch = findViewById(R.id.stepsSwitch);
         jumpingSwitch = findViewById(R.id.jumpingSwitch);
 
-
-
+        // Create a notification channel
         createNotificationChannel();
 
+        // Initialize quotes list by reading from CSV
         quotes = new ArrayList<>();
         quotes = readQuotesFromCSV();
 
+        // Display a random quote from the quotes list
         Quote randomQuote = getRandomQuote();
         if (randomQuote != null) {
+            // Set the quote text and author to respective TextViews
             quoteTextView.setText(randomQuote.getQuoteText());
             authorTextView.setText((randomQuote.getAuthor()));
         } else {
@@ -166,22 +169,35 @@ public class ReminderActivity extends AppCompatActivity {
 
     private List<Quote> readQuotesFromCSV() {
         try {
+            // Open the CSV file stored in the assets folder
             InputStream is = getAssets().open("quotes.csv");
+
+            // Create a reader to read the contents of the file
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
             String line;
+
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", -1); // Split the line by comma
+                // Split the line by comma to separate author and quote
+                String[] parts = line.split(",", -1);
+
                 if (parts.length >= 2) {
+                    // Extract author and quote text from CSV line
                     String author = parts[0];
                     String quote = parts[1];
+
+                    // Create a new Quote object from extracted data and add it to the list
                     Quote newQuote = new Quote(author, quote);
                     quotes.add(newQuote);
                 }
             }
+            // Close the input stream after reading
             is.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Print error details if an IOException occurs
         }
+
+        // Return the list of quotes read from CSV
         return quotes;
     }
 
