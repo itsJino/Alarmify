@@ -7,6 +7,21 @@
     tools:context=".addAlarmActivity">
 
 
+    <TextView
+        android:id="@+id/header3"
+        android:layout_width="102dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/open_sans"
+        android:text="@string/add_alarm"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/okButton"
         android:layout_width="match_parent"
@@ -23,23 +38,27 @@
 
     <Button
         android:id="@+id/selectTimeBtn"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="70dp"
-        android:layout_marginTop="300dp"
-        android:text="Select Time"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginTop="292dp"
+        android:text="@string/select_time"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editAlarmName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="180dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:minHeight="48dp"
+        android:text="@string/name"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
