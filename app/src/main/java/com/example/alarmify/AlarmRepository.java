@@ -9,15 +9,17 @@ import androidx.room.Dao;
 import java.util.List;
 
 public class AlarmRepository {
-    private AlarmDao alarmDao;
-    private LiveData<List<AlarmModal>> allAlarms;
+    private AlarmDao alarmDao; // Data Access Object to interact with the database
+    private LiveData<List<AlarmModal>> allAlarms; // LiveData containing all alarms
 
+    // Constructor initializing the database and accessing the DAO
     public AlarmRepository(Application application) {
         AlarmDatabase database = AlarmDatabase.getInstance(application);
         alarmDao = database.AlarmDao();
         allAlarms = alarmDao.getAllAlarms();
     }
 
+    // Methods for database operations using AsyncTask classes
     public void insert(AlarmModal model) {
         new InsertAlarmAsyncTask(alarmDao).execute(model);
     }
@@ -38,6 +40,7 @@ public class AlarmRepository {
         return allAlarms;
     }
 
+    // AsyncTask classes for performing database operations in the background
     private static class InsertAlarmAsyncTask extends AsyncTask<AlarmModal, Void, Void> {
         private AlarmDao alarmDao;
 

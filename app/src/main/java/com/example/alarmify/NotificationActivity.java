@@ -25,32 +25,39 @@ public class NotificationActivity extends AppCompatActivity implements StepCount
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+        // Initialize UI elements
         textViewStepCount = findViewById(R.id.textViewStepCount);
         progressBar = (ProgressBar)findViewById(R.id.progressBarSteps);
         closeNotification = findViewById(R.id.closeNotification);
 
+        // Set up sensor manager and event listener
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometerEventListener = new AccelerometerEventListener(sensorManager, this);
 
+        // Initialize progress bar
         progressBar.setProgress(0);
         progressBar.setMax(TOTAL_STEPS); // Set the maximum progress for the ProgressBar
 
+        // Button click listener for closing notification
         closeNotification.setOnClickListener(v -> {
             if (progressBar.getProgress() >= TOTAL_STEPS) {
                 // Perform close notification action
                 finish();
             } else {
+                // Show a toast message indicating the remaining steps to close
                 Toast.makeText(NotificationActivity.this, "Complete " + TOTAL_STEPS + " steps to close", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    // Register sensor listener when the activity is resumed
     @Override
     protected void onResume() {
         super.onResume();
         accelerometerEventListener.register();
     }
 
+    // Unregister sensor listener when the activity is paused
     @Override
     protected void onPause() {
         super.onPause();
@@ -63,6 +70,7 @@ public class NotificationActivity extends AppCompatActivity implements StepCount
     }
 
     @Override
+    // Listener method to handle step count changes
     public void onStepCount(int steps) {
         // Update the UI with step count
         runOnUiThread(() -> {
@@ -72,6 +80,7 @@ public class NotificationActivity extends AppCompatActivity implements StepCount
         });
     }
 
+    // Update progress bar with current step count
     private void updateProgressBar(int steps) {
         if (steps <= TOTAL_STEPS) {
             progressBar.setProgress(steps); // Update the ProgressBar with current steps
@@ -80,6 +89,7 @@ public class NotificationActivity extends AppCompatActivity implements StepCount
         }
     }
 
+    // Update state of close button based on step count
     private void updateCloseButtonState(int steps) {
         if (steps >= TOTAL_STEPS) {
             closeNotification.setEnabled(true); // Enable the button if steps reached total steps
